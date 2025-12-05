@@ -1,13 +1,6 @@
 import { Calendar, MapPin } from 'lucide-react'
-import { useState, useEffect } from 'react'
 
 function Hero() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
   const scrollToEvents = () => {
     document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -34,14 +27,14 @@ function Hero() {
       <div className="absolute bottom-20 right-10 w-24 h-24 border-2 border-terracotta-300/20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
 
       {/* Content */}
-      <div className={`relative z-10 text-center text-white px-4 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <h1 className="text-5xl md:text-7xl font-display font-bold mb-4 animate-fade-in-up drop-shadow-lg">
+      <div className="relative z-10 text-center text-white px-4">
+        <h1 className="text-5xl md:text-7xl font-display font-bold mb-4 animate-fade-in-up drop-shadow-lg opacity-0" style={{ animationFillMode: 'forwards' }}>
           The Yodeling Goat
         </h1>
-        <p className="text-xl md:text-2xl mb-10 animate-fade-in-up font-serif italic text-terracotta-100 drop-shadow-md" style={{ animationDelay: '0.2s' }}>
+        <p className="text-xl md:text-2xl mb-10 animate-fade-in-up font-serif italic text-terracotta-100 drop-shadow-md opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
           Backyard Music Venue
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           <button
             onClick={scrollToEvents}
             className="bg-terracotta-600 hover:bg-terracotta-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-terracotta-500/50"
