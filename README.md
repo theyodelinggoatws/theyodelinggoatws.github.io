@@ -1,10 +1,10 @@
 # The Yodeling Goat - Backyard Music Venue Website
 
-A modern, single-page React website for a small backyard music venue. The site displays events from Google Calendar and allows venue owners to manage events without touching code.
+A modern, single-page React website for a small backyard music venue. The site links to Instagram for event information, making it easy for venue owners to manage events through their social media.
 
 ## Features
 
-- 🎵 **Event Calendar**: FullCalendar integration with Google Calendar
+- 🎵 **Events Section**: Direct link to Instagram for event information
 - 📸 **Photo Gallery**: Lightbox viewer for venue photos
 - 📍 **Contact & Directions**: Embedded map and contact information
 - 📱 **Responsive Design**: Mobile-friendly TailwindCSS styling
@@ -14,7 +14,6 @@ A modern, single-page React website for a small backyard music venue. The site d
 
 - **React** (Vite)
 - **TailwindCSS**
-- **FullCalendar** with Google Calendar plugin
 - **Lucide Icons**
 - **GitHub Pages** (hosting)
 - **GitHub Actions** (CI/CD)
@@ -24,15 +23,13 @@ A modern, single-page React website for a small backyard music venue. The site d
 ### Prerequisites
 
 - Node.js 18+ and npm
-- A Google Calendar with public access
-- Google Calendar API key
 
 ### Local Development
 
 1. **Clone the repository**
    ```bash
    git clone <your-repo-url>
-   cd yodeling_goat
+   cd theyodelinggoatws.github.io
    ```
 
 2. **Install dependencies**
@@ -40,39 +37,12 @@ A modern, single-page React website for a small backyard music venue. The site d
    npm install
    ```
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_GOOGLE_CALENDAR_ID=your-calendar-id@group.calendar.google.com
-   VITE_GOOGLE_CALENDAR_API_KEY=your-api-key
-   ```
-
-   **Getting your Google Calendar ID:**
-   - Go to [Google Calendar](https://calendar.google.com)
-   - Find your calendar in the left sidebar
-   - Click the three dots next to your calendar → Settings and sharing
-   - Scroll down to "Integrate calendar"
-   - Copy the "Calendar ID"
-
-   **Getting a Google Calendar API Key:**
-   - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Create a new project or select an existing one
-   - Enable the "Calendar API"
-   - Go to "Credentials" → "Create Credentials" → "API Key"
-   - Restrict the API key to "Calendar API" for security
-
-4. **Make your calendar public**
-   - In Google Calendar settings, under "Access permissions"
-   - Check "Make available to public"
-   - Select "See all event details"
-
-5. **Run the development server**
+3. **Run the development server**
    ```bash
    npm run dev
    ```
 
-6. **Build for production**
+4. **Build for production**
    ```bash
    npm run build
    ```
@@ -81,28 +51,26 @@ A modern, single-page React website for a small backyard music venue. The site d
 
 1. **Enable GitHub Pages**
    - Go to your repository Settings → Pages
-   - Source: Deploy from a branch
-   - Branch: `gh-pages` (will be created automatically)
-   - Folder: `/ (root)`
+   - **IMPORTANT**: Under "Source", select **"GitHub Actions"** (NOT "Deploy from a branch")
+   - This ensures the built files from the workflow are served, not the source files
 
-2. **Set up GitHub Secrets**
-   - Go to repository Settings → Secrets and variables → Actions
-   - Add the following secrets:
-     - `VITE_GOOGLE_CALENDAR_ID`: Your Google Calendar ID
-     - `VITE_GOOGLE_CALENDAR_API_KEY`: Your Google Calendar API key
-
-3. **Push to main branch**
+2. **Push to main branch**
    ```bash
    git push origin main
    ```
 
    The GitHub Action will automatically build and deploy your site to GitHub Pages.
 
+   **Note**: If you see a blank page or MIME type errors, verify that GitHub Pages is set to use "GitHub Actions" as the source, not "Deploy from a branch".
+
 ## Customization
 
 ### Update Venue Information
 
 Edit the following files to customize venue details:
+
+- **Events Section**: `src/components/Events.jsx`
+  - Update `instagramUrl` with your Instagram profile URL
 
 - **Contact Information**: `src/components/Contact.jsx`
   - Update `venueAddress`, `email`, `instagram`, `instagramUrl`
@@ -119,22 +87,6 @@ Edit the following files to customize venue details:
 - **Footer**: `src/components/Footer.jsx`
   - Update social links and email
 
-### Adding Event Details to Google Calendar
-
-When creating events in Google Calendar, you can add custom details that will appear in the event modal:
-
-1. **Description Field**: Add HTML content including:
-   - Band names
-   - Event details
-   - Links
-
-2. **Custom Properties** (via Google Calendar API or extensions):
-   - `flyerImage`: URL to event flyer image
-   - `donationLink`: URL to donation page (Venmo, etc.)
-   - `mapLink`: Custom map link (optional, defaults to location)
-
-   Note: FullCalendar's Google Calendar plugin has limited support for custom properties. For advanced customization, you may need to use the Google Calendar API directly or add event descriptions in HTML format.
-
 ### Styling
 
 The site uses TailwindCSS utility classes. Customize colors, fonts, and spacing in:
@@ -144,12 +96,11 @@ The site uses TailwindCSS utility classes. Customize colors, fonts, and spacing 
 ## Project Structure
 
 ```
-yodeling_goat/
+theyodelinggoatws.github.io/
 ├── src/
 │   ├── components/
 │   │   ├── Hero.jsx          # Hero section with background
-│   │   ├── Calendar.jsx      # FullCalendar component
-│   │   ├── EventModal.jsx    # Event details modal
+│   │   ├── Events.jsx        # Events section with Instagram link
 │   │   ├── VenueInfo.jsx     # Venue information section
 │   │   ├── Gallery.jsx       # Photo gallery with lightbox
 │   │   ├── Contact.jsx       # Contact and directions
@@ -173,12 +124,10 @@ yodeling_goat/
 
 **For Venue Owners:**
 
-To update events, simply edit your Google Calendar:
-- Add new events
-- Update existing events
-- Delete events
-
-Changes will automatically appear on the website after the next deployment (or immediately if using a calendar refresh).
+To update events, simply post on Instagram:
+- Add new events as Instagram posts
+- Update existing events by editing posts
+- Delete events by removing posts
 
 **For Developers:**
 
@@ -190,6 +139,7 @@ Changes will automatically appear on the website after the next deployment (or i
 
 The following features can be added:
 
+- Instagram feed embed
 - Weather widget for upcoming shows
 - Spotify embed for featured artists
 - Email signup form
@@ -203,4 +153,3 @@ MIT
 ## Support
 
 For issues or questions, please open an issue on GitHub.
-

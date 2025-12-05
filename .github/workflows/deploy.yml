@@ -32,9 +32,9 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          VITE_GOOGLE_CALENDAR_ID: ${{ secrets.VITE_GOOGLE_CALENDAR_ID }}
-          VITE_GOOGLE_CALENDAR_API_KEY: ${{ secrets.VITE_GOOGLE_CALENDAR_API_KEY }}
+
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
