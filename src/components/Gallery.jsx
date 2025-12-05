@@ -23,24 +23,28 @@ function Gallery() {
   }
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-20 px-4 bg-rustic-50 relative rustic-overlay">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-12 text-rustic-800 animate-fade-in-up">
           Gallery
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
+              className="relative aspect-square overflow-hidden rounded-xl cursor-pointer group shadow-lg border-2 border-rustic-200/50 hover:border-terracotta-300/50 transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => openLightbox(image)}
             >
               <img
                 src={image}
                 alt={`Venue photo ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-rustic-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="text-white text-sm font-serif">View Full Size</div>
+              </div>
             </div>
           ))}
         </div>

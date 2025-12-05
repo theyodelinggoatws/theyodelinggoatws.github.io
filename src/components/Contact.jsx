@@ -9,29 +9,29 @@ function Contact() {
   const mapLink = `https://maps.google.com/?q=${encodeURIComponent(venueAddress)}`
 
   return (
-    <section id="contact" className="py-16 px-4 bg-white">
+    <section id="contact" className="py-20 px-4 bg-white relative rustic-overlay">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-12 text-rustic-800 animate-fade-in-up">
           Contact & Directions
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="flex gap-4">
+            <div className="flex gap-4 bg-rustic-50/50 p-6 rounded-xl border border-rustic-200/50 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <div className="flex-shrink-0">
-                <div className="bg-indigo-100 rounded-lg p-3">
-                  <MapPin className="text-indigo-600" size={24} />
+                <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-3 border border-terracotta-300/50">
+                  <MapPin className="text-terracotta-700" size={24} />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Address</h3>
-                <p className="text-gray-700 mb-3">{venueAddress}</p>
+                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Address</h3>
+                <p className="text-rustic-700 mb-3 font-serif">{venueAddress}</p>
                 <a
                   href={mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-600 hover:text-indigo-700 flex items-center gap-2"
+                  className="text-terracotta-700 hover:text-terracotta-800 flex items-center gap-2 font-semibold transition-colors"
                 >
                   Get Directions
                   <ExternalLink size={16} />
@@ -39,36 +39,36 @@ function Contact() {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 bg-rustic-50/50 p-6 rounded-xl border border-rustic-200/50 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="flex-shrink-0">
-                <div className="bg-indigo-100 rounded-lg p-3">
-                  <Mail className="text-indigo-600" size={24} />
+                <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-3 border border-terracotta-300/50">
+                  <Mail className="text-terracotta-700" size={24} />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
+                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Email</h3>
                 <a
                   href={`mailto:${email}`}
-                  className="text-indigo-600 hover:text-indigo-700"
+                  className="text-terracotta-700 hover:text-terracotta-800 font-serif transition-colors"
                 >
                   {email}
                 </a>
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 bg-rustic-50/50 p-6 rounded-xl border border-rustic-200/50 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <div className="flex-shrink-0">
-                <div className="bg-indigo-100 rounded-lg p-3">
-                  <Instagram className="text-indigo-600" size={24} />
+                <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-3 border border-terracotta-300/50">
+                  <Instagram className="text-terracotta-700" size={24} />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Instagram</h3>
+                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Instagram</h3>
                 <a
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-600 hover:text-indigo-700 flex items-center gap-2"
+                  className="text-terracotta-700 hover:text-terracotta-800 flex items-center gap-2 font-semibold transition-colors"
                 >
                   {instagram}
                   <ExternalLink size={16} />
@@ -78,7 +78,7 @@ function Contact() {
           </div>
 
           {/* Map Embed */}
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="rounded-xl overflow-hidden shadow-xl border-2 border-rustic-200/50 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <iframe
               width="100%"
               height="100%"

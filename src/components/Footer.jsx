@@ -6,41 +6,47 @@ function Footer() {
   const email = 'info@theyodelinggoat.com'
 
   return (
-    <footer className="bg-gray-900 text-white py-12 px-4">
+    <footer className="bg-gradient-to-b from-rustic-800 to-rustic-900 text-white py-12 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           {/* Brand */}
-          <div>
+          <div className="animate-fade-in-up">
             <div className="flex items-center gap-2 mb-4">
-              <Music size={24} />
-              <h3 className="text-2xl font-bold">The Yodeling Goat</h3>
+              <div className="bg-terracotta-500/30 p-2 rounded-lg border border-terracotta-400/40">
+                <Music className="text-white" size={24} />
+              </div>
+              <h3 className="text-2xl font-display font-bold text-white">The Yodeling Goat</h3>
             </div>
-            <p className="text-gray-400">
+            <p className="text-white/90 font-serif">
               A backyard music venue bringing live music to the community.
             </p>
           </div>
 
           {/* Social Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Connect</h4>
-            <ul className="space-y-2">
+          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <h4 className="text-lg font-display font-semibold mb-4 text-white">Connect</h4>
+            <ul className="space-y-3">
               <li>
                 <a
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-white/90 hover:text-white transition-colors font-serif group"
                 >
-                  <Instagram size={18} />
+                  <div className="bg-terracotta-500/30 p-1.5 rounded group-hover:bg-terracotta-500/40 transition-colors border border-terracotta-400/40">
+                    <Instagram size={18} className="text-white" />
+                  </div>
                   Instagram
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${email}`}
-                  className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-white/90 hover:text-white transition-colors font-serif group"
                 >
-                  <Mail size={18} />
+                  <div className="bg-terracotta-500/30 p-1.5 rounded group-hover:bg-terracotta-500/40 transition-colors border border-terracotta-400/40">
+                    <Mail size={18} className="text-white" />
+                  </div>
                   Email
                 </a>
               </li>
@@ -49,7 +55,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-white/20 pt-8 text-center text-white/80 text-sm font-serif">
           <p>&copy; {new Date().getFullYear()} The Yodeling Goat. All rights reserved.</p>
         </div>
       </div>
