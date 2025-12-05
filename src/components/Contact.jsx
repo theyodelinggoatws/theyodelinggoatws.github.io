@@ -4,7 +4,7 @@ function Contact() {
   // Replace with actual venue details
   const venueLocation = 'Seattle, Washington'
   const email = 'info@theyodelinggoat.com'
-  const instagram = '@theyodelinggoat'
+  const instagram = '@the_yodeling_goat'
   const instagramUrl = 'https://instagram.com/theyodelinggoat'
   const mapLink = `https://maps.google.com/?q=${encodeURIComponent(venueLocation)}`
 
