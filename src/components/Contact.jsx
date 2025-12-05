@@ -2,11 +2,11 @@ import { MapPin, Mail, Instagram, ExternalLink } from 'lucide-react'
 
 function Contact() {
   // Replace with actual venue details
-  const venueAddress = '123 Music Street, Your City, ST 12345'
+  const venueLocation = 'Seattle, Washington'
   const email = 'info@theyodelinggoat.com'
   const instagram = '@theyodelinggoat'
   const instagramUrl = 'https://instagram.com/theyodelinggoat'
-  const mapLink = `https://maps.google.com/?q=${encodeURIComponent(venueAddress)}`
+  const mapLink = `https://maps.google.com/?q=${encodeURIComponent(venueLocation)}`
 
   return (
     <section id="contact" className="py-20 px-4 bg-white relative rustic-overlay">
@@ -25,8 +25,8 @@ function Contact() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Address</h3>
-                <p className="text-rustic-700 mb-3 font-serif">{venueAddress}</p>
+                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Location</h3>
+                <p className="text-rustic-700 mb-3 font-serif">{venueLocation}</p>
                 <a
                   href={mapLink}
                   target="_blank"
@@ -87,7 +87,7 @@ function Contact() {
               scrolling="no"
               marginHeight="0"
               marginWidth="0"
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(venueAddress)}&output=embed`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(venueLocation)}&output=embed`}
               title="Venue Location"
             ></iframe>
           </div>
