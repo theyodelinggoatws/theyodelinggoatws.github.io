@@ -1,5 +1,5 @@
 import Hero from '../components/Hero'
-import Calendar from '../components/Calendar'
+import Events from '../components/Events'
 import VenueInfo from '../components/VenueInfo'
 import Gallery from '../components/Gallery'
 import Contact from '../components/Contact'
@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
-      <Calendar />
+      <Events />
       <VenueInfo />
       <Gallery />
       <Contact />

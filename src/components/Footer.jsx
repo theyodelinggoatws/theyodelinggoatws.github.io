@@ -1,18 +1,14 @@
-import { Instagram, Mail, Calendar, Music } from 'lucide-react'
+import { Instagram, Mail, Music } from 'lucide-react'
 
 function Footer() {
   // Replace with actual links
   const instagramUrl = 'https://instagram.com/theyodelinggoat'
   const email = 'info@theyodelinggoat.com'
-  const googleCalendarId = import.meta.env.VITE_GOOGLE_CALENDAR_ID || ''
-  const calendarWebcalUrl = googleCalendarId 
-    ? `https://calendar.google.com/calendar/ical/${googleCalendarId}/public/basic.ics`
-    : '#'
 
   return (
     <footer className="bg-gray-900 text-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -49,21 +45,6 @@ function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Calendar Subscription */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Stay Updated</h4>
-            <a
-              href={calendarWebcalUrl}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <Calendar size={18} />
-              Subscribe to Calendar
-            </a>
-            <p className="text-sm text-gray-500 mt-2">
-              Add our events to your calendar
-            </p>
           </div>
         </div>
 
