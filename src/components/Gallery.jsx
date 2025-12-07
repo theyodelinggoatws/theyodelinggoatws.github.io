@@ -1,17 +1,23 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import img1 from '../assets/images/gallery1.jpg'
+import img2 from '../assets/images/gallery2.jpg'
+import img3 from '../assets/images/gallery3.jpg'
+import img4 from '../assets/images/gallery4.jpg'
+import img5 from '../assets/images/gallery5.jpg'
+import img6 from '../assets/images/gallery6.jpg'
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null)
 
   // Placeholder images - replace with actual venue photos
   const images = [
-    'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80',
-    'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
-    'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80',
-    'https://images.unsplash.com/photo-1501281668745-f7f57a8a3cba?w=800&q=80',
-    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80',
-    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
   ]
 
   const openLightbox = (image) => {

@@ -9,8 +9,8 @@ function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
-      <Events />
       <VenueInfo />
+      <Events />
       <Gallery />
       <Contact />
       <Footer />
