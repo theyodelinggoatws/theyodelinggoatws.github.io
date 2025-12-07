@@ -1,4 +1,5 @@
 import { Calendar, MapPin } from 'lucide-react'
+import heroVideo from '../assets/videos/hero-video.mp4'
 
 function Hero() {
   const scrollToEvents = () => {
@@ -11,13 +12,17 @@ function Hero() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1920&q=80)',
-        }}
-      >
+      {/* Background Video */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-rustic-900/70 via-rustic-800/60 to-rustic-900/70"></div>
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
