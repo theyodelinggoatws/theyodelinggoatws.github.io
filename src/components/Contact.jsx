@@ -3,7 +3,6 @@ import { MapPin, Mail, Instagram, ExternalLink } from 'lucide-react'
 function Contact() {
   // Replace with actual venue details
   const venueLocation = 'Seattle, Washington'
-  const email = 'info@theyodelinggoat.com'
   const instagram = '@the_yodeling_goat'
   const instagramUrl = 'https://instagram.com/the_yodeling_goat'
   const mapLink = `https://maps.google.com/?q=${encodeURIComponent(venueLocation)}`
@@ -35,23 +34,6 @@ function Contact() {
                 >
                   Get Directions
                   <ExternalLink size={16} />
-                </a>
-              </div>
-            </div>
-
-            <div className="flex gap-4 bg-rustic-50/50 p-6 rounded-xl border border-rustic-200/50 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex-shrink-0">
-                <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-3 border border-terracotta-300/50">
-                  <Mail className="text-terracotta-700" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Email</h3>
-                <a
-                  href={`mailto:${email}`}
-                  className="text-terracotta-700 hover:text-terracotta-800 font-serif transition-colors"
-                >
-                  {email}
                 </a>
               </div>
             </div>

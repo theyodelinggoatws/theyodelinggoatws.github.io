@@ -10,11 +10,12 @@ function VenueInfo() {
         
         <div className="prose prose-lg max-w-none">
           <p className="text-rustic-700 text-lg md:text-xl mb-10 font-serif leading-relaxed text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            The Yodeling Goat is a small, intimate backyard music venue dedicated to bringing 
-            live music to our community. We host local and touring artists in a relaxed, 
-            outdoor setting where music lovers can gather and enjoy great performances.
+            We love bringing together our community to share special nights of live music that leave you feeling warm and connected. The Yodeling Goat celebrates musicians both local and touring. 
+            We curate artists, create gatherings for friends, neighbors, and fellow music lovers, to experience music up close in a cozy, close-knit setting.
           </p>
-
+          <p className="text-rustic-700 text-lg md:text-xl mb-10 font-serif leading-relaxed text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            In the summers, we host in our beautiful backyard beneath the poplar trees, and in the cooler months, we move indoors for smaller, more intimate performances.
+          </p>
           <div className="grid md:grid-cols-2 gap-8 mt-12">
             {/* Parking */}
             <div className="flex gap-4 bg-rustic-50/50 p-6 rounded-xl border border-rustic-200/50 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -74,8 +75,7 @@ function VenueInfo() {
               <div>
                 <h3 className="text-xl font-display font-semibold text-rustic-800 mb-2">Donations</h3>
                 <p className="text-rustic-700 font-serif">
-                  Suggested donation: $10-20 per person. All donations go directly to the 
-                  performing artists. Cash or Venmo accepted at the door.
+                  We ask for a $25 suggested donation, but no one is ever turned away for lack of funds. All money goes to musicians and musicians only, Cash or Venmo accepted at the door.
                 </p>
               </div>
             </div>

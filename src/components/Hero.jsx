@@ -32,7 +32,7 @@ function Hero() {
           The Yodeling Goat
         </h1>
         <p className="text-xl md:text-2xl mb-10 animate-fade-in-up font-serif italic text-terracotta-100 drop-shadow-md opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-          Backyard Music Venue
+          An intimate house concert space
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           <button
