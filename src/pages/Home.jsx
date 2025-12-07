@@ -3,6 +3,7 @@ import Events from '../components/Events'
 import VenueInfo from '../components/VenueInfo'
 import Gallery from '../components/Gallery'
 import Contact from '../components/Contact'
+import GoatMemorial from '../components/GoatMemorial'
 import Footer from '../components/Footer'
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
       <Events />
       <Gallery />
       <Contact />
+      <GoatMemorial />
       <Footer />
     </div>
   )
