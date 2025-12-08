@@ -3,7 +3,6 @@ import { Instagram, Mail, Music } from 'lucide-react'
 function Footer() {
   // Replace with actual links
   const instagramUrl = 'https://instagram.com/theyodelinggoat'
-  const email = 'info@theyodelinggoat.com'
 
   return (
     <footer className="bg-gradient-to-b from-rustic-800 to-rustic-900 text-white py-12 px-4 relative">
@@ -37,17 +36,6 @@ function Footer() {
                     <Instagram size={18} className="text-white" />
                   </div>
                   Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${email}`}
-                  className="flex items-center gap-2 text-white/90 hover:text-white transition-colors font-serif group"
-                >
-                  <div className="bg-terracotta-500/30 p-1.5 rounded group-hover:bg-terracotta-500/40 transition-colors border border-terracotta-400/40">
-                    <Mail size={18} className="text-white" />
-                  </div>
-                  Email
                 </a>
               </li>
             </ul>

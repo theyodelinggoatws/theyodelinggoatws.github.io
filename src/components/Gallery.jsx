@@ -6,12 +6,14 @@ import img3 from '../assets/images/gallery3.jpg'
 import img4 from '../assets/images/gallery4.jpg'
 import img5 from '../assets/images/gallery5.jpg'
 import img6 from '../assets/images/gallery6.jpg'
+import img7 from '../assets/images/gallery7.jpg'
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null)
 
   // Placeholder images - replace with actual venue photos
   const images = [
+    img7,
     img1,
     img2,
     img3,
