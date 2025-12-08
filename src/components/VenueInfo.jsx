@@ -1,4 +1,5 @@
-import { Music, Car, Wine, Users } from 'lucide-react'
+import { Music, Car, Wine, Users, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function VenueInfo() {
@@ -115,6 +116,15 @@ function VenueInfo() {
                 </p>
               </div>
             </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              to="/venue"
+              className="inline-flex items-center gap-2 bg-terracotta-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-terracotta-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-terracotta-500/50"
+            >
+              Learn More About The Venue
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </div>

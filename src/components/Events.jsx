@@ -1,4 +1,5 @@
-import { Instagram, ExternalLink } from 'lucide-react'
+import { Instagram, ExternalLink, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/images/venue-logo.png';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
@@ -37,16 +38,25 @@ function Events() {
           <p className="text-rustic-700 mb-8 text-lg md:text-xl font-serif">
             Follow us on Instagram to see all our upcoming shows, events, and updates!
           </p>
-          <a
-            href={instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-terracotta-600 to-terracotta-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-terracotta-700 hover:to-terracotta-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-terracotta-500/50"
-          >
-            <Instagram size={24} />
-            View Events on Instagram
-            <ExternalLink size={20} />
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-terracotta-600 to-terracotta-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-terracotta-700 hover:to-terracotta-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-terracotta-500/50"
+            >
+              <Instagram size={24} />
+              View Events on Instagram
+              <ExternalLink size={20} />
+            </a>
+            <Link
+              to="/events"
+              className="inline-flex items-center gap-2 bg-transparent border-2 border-terracotta-600 text-terracotta-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-terracotta-50 transition-all transform hover:scale-105"
+            >
+              View All Events
+              <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
