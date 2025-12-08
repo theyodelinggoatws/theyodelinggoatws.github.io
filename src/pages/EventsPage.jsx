@@ -27,18 +27,18 @@ function EventsPage() {
 
   // Poster images
   const posters = [
-    { id: 1, image: poster1 },
-    { id: 2, image: poster2 },
-    { id: 3, image: poster3 },
-    { id: 4, image: poster4 },
-    { id: 5, image: poster5 },
-    { id: 6, image: poster6 },
-    { id: 7, image: poster7 },
-    { id: 8, image: poster8 },
-    { id: 9, image: poster9 },
-    { id: 10, image: poster10 },
-    { id: 11, image: poster11 },
     { id: 12, image: poster12 },
+    { id: 11, image: poster11 },
+    { id: 10, image: poster10 },
+    { id: 9, image: poster9 },
+    { id: 8, image: poster8 },
+    { id: 7, image: poster7 },
+    { id: 6, image: poster6 },
+    { id: 5, image: poster5 },
+    { id: 4, image: poster4 },
+    { id: 3, image: poster3 },
+    { id: 2, image: poster2 },
+    { id: 1, image: poster1 },
   ]
 
   useEffect(() => {
