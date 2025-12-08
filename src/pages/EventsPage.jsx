@@ -77,6 +77,11 @@ function EventsPage() {
     }
   }
 
+  // Randomly determine if poster uses tape or thumbtack
+  const getAttachmentType = (index) => {
+    return index % 2 === 0 ? 'tape' : 'thumbtack'
+  }
+
   return (
     <div className="min-h-screen bg-rustic-50">
       <Navigation />
@@ -115,39 +120,168 @@ function EventsPage() {
               Concert Posters
             </h2>
             
-            {/* Simulated wall background */}
-            <div className="relative bg-gradient-to-br from-rustic-200 to-rustic-300 rounded-3xl p-12 md:p-20 shadow-2xl border-4 border-rustic-400/50 min-h-[800px]">
-              {/* Wall texture */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_rgba(0,0,0,0.1)_1px,_transparent_0)] bg-[length:40px_40px] rounded-3xl opacity-30"></div>
+            {/* Simulated cork wall background */}
+            <div className="relative rounded-3xl p-12 md:p-20 shadow-2xl border-4 border-amber-800/30 min-h-[800px] overflow-hidden">
+              {/* Base cork color - warm brown/beige */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d4a574] via-[#c99a6a] to-[#b88a5a]"></div>
+              
+              {/* Cork texture - multiple layers for depth */}
+              <div className="absolute inset-0 overflow-hidden">
+                {/* Cork cell pattern - honeycomb-like structure */}
+                <div 
+                  className="absolute inset-0 opacity-30"
+                  style={{
+                    backgroundImage: `
+                      radial-gradient(ellipse at 15% 25%, rgba(139, 90, 43, 0.4) 3px, transparent 3px),
+                      radial-gradient(ellipse at 55% 45%, rgba(139, 90, 43, 0.35) 2.5px, transparent 2.5px),
+                      radial-gradient(ellipse at 85% 15%, rgba(139, 90, 43, 0.3) 2px, transparent 2px),
+                      radial-gradient(ellipse at 35% 75%, rgba(139, 90, 43, 0.4) 3.5px, transparent 3.5px),
+                      radial-gradient(ellipse at 75% 65%, rgba(139, 90, 43, 0.35) 2.8px, transparent 2.8px),
+                      radial-gradient(ellipse at 25% 55%, rgba(139, 90, 43, 0.3) 2.2px, transparent 2.2px),
+                      radial-gradient(ellipse at 65% 85%, rgba(139, 90, 43, 0.4) 3px, transparent 3px),
+                      radial-gradient(ellipse at 45% 35%, rgba(139, 90, 43, 0.35) 2.5px, transparent 2.5px)
+                    `,
+                    backgroundSize: '80px 80px, 70px 70px, 60px 60px, 85px 85px, 75px 75px, 65px 65px, 80px 80px, 70px 70px',
+                    backgroundPosition: '0 0, 25px 25px, 15px 15px, 40px 40px, 30px 30px, 20px 20px, 50px 50px, 35px 35px'
+                  }}
+                ></div>
+                
+                {/* Cork grain texture - vertical and horizontal lines */}
+                <div 
+                  className="absolute inset-0 opacity-25"
+                  style={{
+                    backgroundImage: `
+                      repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(139, 90, 43, 0.15) 8px, rgba(139, 90, 43, 0.15) 9px),
+                      repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(139, 90, 43, 0.12) 12px, rgba(139, 90, 43, 0.12) 13px),
+                      repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(139, 90, 43, 0.1) 15px, rgba(139, 90, 43, 0.1) 16px)
+                    `,
+                    backgroundSize: '100% 100%'
+                  }}
+                ></div>
+                
+                {/* Darker cork spots for variation */}
+                <div 
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage: `
+                      radial-gradient(circle at 20% 30%, rgba(101, 67, 33, 0.3) 4px, transparent 4px),
+                      radial-gradient(circle at 60% 70%, rgba(101, 67, 33, 0.25) 3px, transparent 3px),
+                      radial-gradient(circle at 80% 20%, rgba(101, 67, 33, 0.3) 5px, transparent 5px),
+                      radial-gradient(circle at 40% 80%, rgba(101, 67, 33, 0.25) 3.5px, transparent 3.5px),
+                      radial-gradient(circle at 70% 50%, rgba(101, 67, 33, 0.3) 4px, transparent 4px)
+                    `,
+                    backgroundSize: '120px 120px, 100px 100px, 130px 130px, 110px 110px, 125px 125px',
+                    backgroundPosition: '0 0, 40px 40px, 20px 20px, 60px 60px, 30px 30px'
+                  }}
+                ></div>
+                
+                {/* Subtle noise/texture overlay */}
+                <div 
+                  className="absolute inset-0 opacity-15"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+                    backgroundSize: '150px 150px'
+                  }}
+                ></div>
+              </div>
               
               {/* Poster grid with wall effect */}
               <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                {posters.map((poster, index) => (
-                  <div
-                    key={poster.id}
-                    ref={el => posterRefs.current[index] = el}
-                    className={`relative cursor-pointer group transition-all duration-800 ${visiblePosters.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                    style={{ 
-                      ...getPosterStyle(index),
-                      transitionDelay: `${index * 0.1}s`
-                    }}
-                    onClick={() => setSelectedPoster(poster)}
-                  >
-                    {/* Poster shadow/tape effect */}
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-12 h-4 bg-rustic-400/40 rounded-full blur-sm"></div>
-                    <div className="absolute -top-1 left-1/4 w-2 h-2 bg-rustic-500/60 rounded-full"></div>
-                    <div className="absolute -top-1 right-1/4 w-2 h-2 bg-rustic-500/60 rounded-full"></div>
-                    
-                    {/* Poster */}
-                    <div className="relative bg-white rounded-lg overflow-hidden shadow-2xl border-4 border-rustic-600/30 transform group-hover:scale-105 transition-transform duration-300">
-                      <img
-                        src={poster.image}
-                        alt={`Concert poster ${poster.id}`}
-                        className="w-full h-auto object-cover"
-                      />
+                {posters.map((poster, index) => {
+                  const attachmentType = getAttachmentType(index)
+                  return (
+                    <div
+                      key={poster.id}
+                      ref={el => posterRefs.current[index] = el}
+                      className={`relative cursor-pointer group transition-all duration-800 ${visiblePosters.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                      style={{ 
+                        ...getPosterStyle(index),
+                        transitionDelay: `${index * 0.1}s`
+                      }}
+                      onClick={() => setSelectedPoster(poster)}
+                    >
+                      {/* Attachment effect - Painter's tape (thumbtacks are inside poster container) */}
+                      {attachmentType === 'tape' && (
+                        <>
+                          {/* Painter's tape effect - light blue */}
+                          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-3.5 bg-blue-200/70 rounded-sm blur-[1px] shadow-sm border border-blue-300/40"></div>
+                          <div className="absolute -top-1.5 left-1/4 w-2.5 h-2.5 bg-blue-300/75 rounded-sm shadow-sm border border-blue-400/50"></div>
+                          <div className="absolute -top-1.5 right-1/4 w-2.5 h-2.5 bg-blue-300/75 rounded-sm shadow-sm border border-blue-400/50"></div>
+                        </>
+                      )}
+                      
+                      {/* Poster */}
+                      <div className="relative bg-white rounded-lg overflow-visible shadow-2xl border-4 border-amber-600/30 transform group-hover:scale-105 transition-transform duration-300">
+                        {/* Thumbtacks positioned relative to poster container */}
+                        {attachmentType === 'thumbtack' && (
+                          <>
+                            {/* Top-left corner */}
+                            <div className="absolute top-2 left-2 z-10">
+                              <div className="w-2.5 h-2.5 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full shadow-md border border-gray-600/30"></div>
+                              <div 
+                                className="absolute top-2.5 left-1/2"
+                                style={{
+                                  transform: 'translateX(-50%) rotate(45deg)',
+                                  transformOrigin: 'top center',
+                                  width: '0.5px',
+                                  height: '2px',
+                                  background: 'linear-gradient(to bottom, #9ca3af, #6b7280)'
+                                }}
+                              ></div>
+                            </div>
+                            {/* Top-right corner */}
+                            <div className="absolute top-2 right-2 z-10">
+                              <div className="w-2.5 h-2.5 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full shadow-md border border-gray-600/30"></div>
+                              <div 
+                                className="absolute top-2.5 left-1/2"
+                                style={{
+                                  transform: 'translateX(-50%) rotate(-45deg)',
+                                  transformOrigin: 'top center',
+                                  width: '0.5px',
+                                  height: '2px',
+                                  background: 'linear-gradient(to bottom, #9ca3af, #6b7280)'
+                                }}
+                              ></div>
+                            </div>
+                            {/* Bottom-left corner */}
+                            <div className="absolute bottom-2 left-2 z-10">
+                              <div className="w-2.5 h-2.5 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full shadow-md border border-gray-600/30"></div>
+                              <div 
+                                className="absolute bottom-2.5 left-1/2"
+                                style={{
+                                  transform: 'translateX(-50%) rotate(-45deg)',
+                                  transformOrigin: 'bottom center',
+                                  width: '0.5px',
+                                  height: '2px',
+                                  background: 'linear-gradient(to top, #9ca3af, #6b7280)'
+                                }}
+                              ></div>
+                            </div>
+                            {/* Bottom-right corner */}
+                            <div className="absolute bottom-2 right-2 z-10">
+                              <div className="w-2.5 h-2.5 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full shadow-md border border-gray-600/30"></div>
+                              <div 
+                                className="absolute bottom-2.5 left-1/2"
+                                style={{
+                                  transform: 'translateX(-50%) rotate(45deg)',
+                                  transformOrigin: 'bottom center',
+                                  width: '0.5px',
+                                  height: '2px',
+                                  background: 'linear-gradient(to top, #9ca3af, #6b7280)'
+                                }}
+                              ></div>
+                            </div>
+                          </>
+                        )}
+                        <img
+                          src={poster.image}
+                          alt={`Concert poster ${poster.id}`}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           </div>
