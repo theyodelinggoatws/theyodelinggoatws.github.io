@@ -1,12 +1,18 @@
 import { Heart } from 'lucide-react'
 import goatImage from '../assets/images/goat-image.jpg'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function GoatMemorial() {
+  const [headerRef, isHeaderVisible] = useScrollAnimation({ threshold: 0.1 })
+  const [cardRef, isCardVisible] = useScrollAnimation({ threshold: 0.1 })
 
   return (
     <section className="py-20 px-4 bg-rustic-100 relative rustic-overlay">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in-up">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-12 transition-all duration-800 ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
           <div className="flex justify-center mb-4">
             <div className="bg-terracotta-100 rounded-full p-4 border-2 border-terracotta-300/50">
               <Heart className="text-terracotta-700" size={32} />
@@ -20,7 +26,11 @@ function GoatMemorial() {
           </p>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 border-2 border-rustic-200/50 relative overflow-hidden animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div 
+          ref={cardRef}
+          className={`bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 border-2 border-rustic-200/50 relative overflow-hidden transition-all duration-800 ${isCardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          style={{ transitionDelay: '0.2s' }}
+        >
           {/* Decorative corner elements */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-terracotta-400/30 rounded-tl-2xl"></div>
           <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-terracotta-400/30 rounded-br-2xl"></div>

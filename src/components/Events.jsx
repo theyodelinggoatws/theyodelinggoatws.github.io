@@ -1,17 +1,27 @@
 import { Instagram, ExternalLink } from 'lucide-react'
 import logo from '../assets/images/venue-logo.png';
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Events() {
   const instagramUrl = 'https://instagram.com/the_yodeling_goat'
+  const [titleRef, isTitleVisible] = useScrollAnimation({ threshold: 0.1 })
+  const [cardRef, isCardVisible] = useScrollAnimation({ threshold: 0.1 })
 
   return (
     <section id="events" className="py-20 px-4 bg-rustic-50 relative rustic-overlay">
       <div className="max-w-4xl mx-auto">
 
-        <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-12 text-rustic-800 animate-fade-in-up">
+        <h2 
+          ref={titleRef}
+          className={`text-4xl md:text-5xl font-display font-bold text-center mb-12 text-rustic-800 transition-all duration-800 ${isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
           Upcoming Events
         </h2>
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center border-2 border-rustic-200/50 relative overflow-hidden animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div 
+          ref={cardRef}
+          className={`bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center border-2 border-rustic-200/50 relative overflow-hidden transition-all duration-800 ${isCardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          style={{ transitionDelay: '0.2s' }}
+        >
           {/* Decorative corner elements */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-terracotta-400/30 rounded-tl-2xl"></div>
           <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-terracotta-400/30 rounded-br-2xl"></div>
