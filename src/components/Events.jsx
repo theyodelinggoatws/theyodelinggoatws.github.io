@@ -1,4 +1,5 @@
 import { Instagram, ExternalLink } from 'lucide-react'
+import logo from '../assets/images/venue-logo.png';
 
 function Events() {
   const instagramUrl = 'https://instagram.com/the_yodeling_goat'
@@ -6,6 +7,7 @@ function Events() {
   return (
     <section id="events" className="py-20 px-4 bg-rustic-50 relative rustic-overlay">
       <div className="max-w-4xl mx-auto">
+
         <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-12 text-rustic-800 animate-fade-in-up">
           Upcoming Events
         </h2>
@@ -16,7 +18,7 @@ function Events() {
           
           <div className="flex justify-center mb-6 animate-float">
             <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-full p-6 shadow-lg border-2 border-terracotta-300/50">
-              <Instagram className="text-terracotta-700" size={64} />
+              <img src={logo} alt="The Yodeling Goat Venue Logo" className="mx-auto w-32 h-32 object-contain animate-fade-in-up" />
             </div>
           </div>
           <h3 className="text-2xl md:text-3xl font-display font-semibold text-rustic-800 mb-4">

@@ -2,7 +2,7 @@ import { Instagram, Mail, Music } from 'lucide-react'
 
 function Footer() {
   // Replace with actual links
-  const instagramUrl = 'https://instagram.com/theyodelinggoat'
+  const instagramUrl = 'https://instagram.com/the_yodeling_goat'
 
   return (
     <footer className="bg-gradient-to-b from-rustic-800 to-rustic-900 text-white py-12 px-4 relative">
