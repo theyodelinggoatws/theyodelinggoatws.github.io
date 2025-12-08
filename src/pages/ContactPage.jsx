@@ -14,6 +14,7 @@ function ContactPage() {
   const [card1Ref, isCard1Visible] = useScrollAnimation({ threshold: 0.1 })
   const [card2Ref, isCard2Visible] = useScrollAnimation({ threshold: 0.1 })
   const [card3Ref, isCard3Visible] = useScrollAnimation({ threshold: 0.1 })
+  const [card4Ref, isCard4Visible] = useScrollAnimation({ threshold: 0.1 })
   const [mapRef, isMapVisible] = useScrollAnimation({ threshold: 0.1 })
 
   return (
@@ -121,20 +122,26 @@ function ContactPage() {
               </div>
 
               {/* Hours/Info */}
-              <div className="bg-white p-8 rounded-2xl border-2 border-rustic-200/50 hover:shadow-xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-4 border border-terracotta-300/50">
-                    <Clock className="text-terracotta-700" size={32} />
+              <div 
+                ref={card4Ref}
+                className={`bg-white p-8 rounded-2xl border-2 border-rustic-200/50 hover:shadow-xl transition-all duration-800 ${isCard4Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: '0.4s' }}
+              >
+                <div className="bg-white p-8 rounded-2xl border-2 border-rustic-200/50 hover:shadow-xl">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="bg-gradient-to-br from-terracotta-100 to-terracotta-200 rounded-lg p-4 border border-terracotta-300/50">
+                      <Clock className="text-terracotta-700" size={32} />
+                    </div>
+                    <h3 className="text-2xl font-display font-semibold text-rustic-800">Event Times</h3>
                   </div>
-                  <h3 className="text-2xl font-display font-semibold text-rustic-800">Event Times</h3>
+                  <p className="text-rustic-700 mb-4 font-serif text-lg leading-relaxed">
+                    Shows typically start at 7:00 PM, with doors opening around 6:00 PM. 
+                    We recommend arriving early to find parking and get settled.
+                  </p>
+                  <p className="text-rustic-600 font-serif">
+                    Check our Instagram for specific show times and any schedule changes.
+                  </p>
                 </div>
-                <p className="text-rustic-700 mb-4 font-serif text-lg leading-relaxed">
-                  Shows typically start at 7:00 PM, with doors opening around 6:00 PM. 
-                  We recommend arriving early to find parking and get settled.
-                </p>
-                <p className="text-rustic-600 font-serif">
-                  Check our Instagram for specific show times and any schedule changes.
-                </p>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Music } from 'lucide-react'
+import logo from '../assets/images/venue-logo.png'
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,12 +45,10 @@ function Navigation() {
             to="/" 
             className="flex items-center gap-2 text-rustic-800 hover:text-terracotta-700 transition-colors"
           >
-            <div className="bg-terracotta-100 rounded-lg p-2 border border-terracotta-300/50">
-              <Music className="text-terracotta-700" size={24} />
-            </div>
+              {/* <Music className="text-terracotta-700" size={24} /> */}
+              <img src={logo} alt="The Yodeling Goat Logo" className="w-8 h-8 object-contain" />
             <span className="font-display font-bold text-xl md:text-2xl">The Yodeling Goat</span>
           </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
