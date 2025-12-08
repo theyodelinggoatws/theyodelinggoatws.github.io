@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { X, Grid3x3, Maximize2 } from 'lucide-react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
@@ -13,20 +13,55 @@ import img7 from '../assets/images/gallery7.jpg'
 
 function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [viewMode, setViewMode] = useState('wide') // 'wide' for 1 column, 'grid' for 3 columns
   const [titleRef, isTitleVisible] = useScrollAnimation({ threshold: 0.1 })
   const imageRefs = useRef([])
   const [visibleImages, setVisibleImages] = useState(new Set())
+  const currentImageRef = useRef(0) // Track the currently visible image index
 
   const images = [
-    { src: img7, caption: 'Summer evening performance' },
-    { src: img1, caption: 'Intimate indoor setting' },
-    { src: img2, caption: 'Outdoor concert under the trees' },
-    { src: img3, caption: 'Acoustic performance' },
-    { src: img4, caption: 'Community gathering' },
-    { src: img5, caption: 'Evening show' },
-    { src: img6, caption: 'Live music experience' },
+    img7,
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
   ]
 
+  // Track which image is currently in the center of the viewport
+  useEffect(() => {
+    const updateCurrentImage = () => {
+      const viewportCenter = window.innerHeight / 2 + window.scrollY
+      let closestIndex = 0
+      let closestDistance = Infinity
+
+      imageRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect()
+          const imageCenter = rect.top + rect.height / 2 + window.scrollY
+          const distance = Math.abs(imageCenter - viewportCenter)
+          
+          if (distance < closestDistance) {
+            closestDistance = distance
+            closestIndex = index
+          }
+        }
+      })
+
+      currentImageRef.current = closestIndex
+    }
+
+    // Update on scroll
+    window.addEventListener('scroll', updateCurrentImage, { passive: true })
+    updateCurrentImage() // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', updateCurrentImage)
+    }
+  }, [])
+
+  // Set up intersection observers for animations
   useEffect(() => {
     const observers = imageRefs.current.map((ref, index) => {
       if (!ref) return null
@@ -48,7 +83,31 @@ function GalleryPage() {
     return () => {
       observers.forEach(observer => observer?.disconnect())
     }
-  }, [])
+  }, [viewMode]) // Re-run when view mode changes
+
+  // Scroll to current image when view mode changes
+  useEffect(() => {
+    const scrollToCurrentImage = () => {
+      const currentIndex = currentImageRef.current
+      const imageElement = imageRefs.current[currentIndex]
+      
+      if (imageElement) {
+        // Small delay to allow layout to update
+        setTimeout(() => {
+          imageElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center',
+            inline: 'nearest'
+          })
+        }, 100)
+      }
+    }
+
+    // Only scroll if we have a valid current image reference
+    if (imageRefs.current.length > 0 && imageRefs.current[currentImageRef.current]) {
+      scrollToCurrentImage()
+    }
+  }, [viewMode])
 
   const openLightbox = (image) => {
     setSelectedImage(image)
@@ -81,24 +140,55 @@ function GalleryPage() {
         {/* Gallery Grid */}
         <section className="py-20 px-4 bg-rustic-50 relative rustic-overlay">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* View Toggle - Mobile Only - Sticky */}
+            <div className="sticky top-20 z-40 flex justify-end mb-6 md:hidden">
+              <div className="flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-lg border-2 border-rustic-200/50">
+                <button
+                  onClick={() => setViewMode('wide')}
+                  className={`p-2 rounded transition-all ${
+                    viewMode === 'wide'
+                      ? 'bg-terracotta-600 text-white'
+                      : 'text-rustic-700 hover:bg-rustic-100'
+                  }`}
+                  aria-label="Wide view"
+                >
+                  <Maximize2 size={20} />
+                </button>
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded transition-all ${
+                    viewMode === 'grid'
+                      ? 'bg-terracotta-600 text-white'
+                      : 'text-rustic-700 hover:bg-rustic-100'
+                  }`}
+                  aria-label="Grid view"
+                >
+                  <Grid3x3 size={20} />
+                </button>
+              </div>
+            </div>
+            
+            <div className={`grid gap-6 md:gap-8 ${
+              viewMode === 'wide'
+                ? 'grid-cols-1'
+                : 'grid-cols-3'
+            } sm:grid-cols-2 lg:grid-cols-3`}>
               {images.map((image, index) => (
                 <div
-                  key={index}
+                  key={`${viewMode}-${index}`}
                   ref={el => imageRefs.current[index] = el}
                   className={`relative aspect-square overflow-hidden rounded-xl cursor-pointer group shadow-lg border-2 border-rustic-200/50 hover:border-terracotta-300/50 transition-all duration-800 ${visibleImages.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   style={{ transitionDelay: `${index * 0.1}s` }}
                   onClick={() => openLightbox(image)}
                 >
                   <img
-                    src={image.src}
-                    alt={image.caption}
+                    src={image}
+                    alt={`Gallery image ${index + 1}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-rustic-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white font-serif text-lg">{image.caption}</p>
-                    <p className="text-white/80 font-serif text-sm mt-1">Click to view full size</p>
+                    <p className="text-white/80 font-serif text-sm">Click to view full size</p>
                   </div>
                 </div>
               ))}
@@ -136,13 +226,10 @@ function GalleryPage() {
           </button>
           <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
             <img
-              src={selectedImage.src}
-              alt={selectedImage.caption}
+              src={selectedImage}
+              alt="Gallery image"
               className="w-full h-auto rounded-lg shadow-2xl"
             />
-            {selectedImage.caption && (
-              <p className="text-white text-center mt-4 font-serif text-lg">{selectedImage.caption}</p>
-            )}
           </div>
         </div>
       )}
