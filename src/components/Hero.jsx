@@ -42,17 +42,10 @@ function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           <button
             onClick={scrollToEvents}
-            className="bg-terracotta-600 hover:bg-terracotta-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-terracotta-500/50"
+            className="bg-transparent border-2 border-white/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm hover:border-white transform hover:scale-105"
           >
             <Calendar size={20} />
             See Events
-          </button>
-          <button
-            onClick={scrollToContact}
-            className="bg-transparent border-2 border-white/80 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm hover:border-white transform hover:scale-105"
-          >
-            <MapPin size={20} />
-            Get Directions
           </button>
         </div>
       </div>
