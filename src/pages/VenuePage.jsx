@@ -61,84 +61,156 @@ function VenuePage() {
             </h2>
             
             <div className="grid md:grid-cols-2 gap-12 mb-16">
-              {/* Summer */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-rustic-200/50 relative group">
-                {/* Colorful accent stripe */}
-                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500"></div>
-                
-                <div className="p-8 md:p-12">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="bg-gradient-to-br from-emerald-100 to-teal-200 rounded-lg p-4 border border-emerald-300/50 shadow-md">
-                      <TreePine className="text-emerald-700" size={32} />
+              {/* Summer - Letter style */}
+              <div className="relative">
+                {/* Letter/Note background with paper texture - 8.5" x 11" aspect ratio */}
+                <div className="bg-gradient-to-br from-amber-50 via-white to-amber-50/50 rounded-lg shadow-2xl border-2 border-rustic-300/40 relative transform rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300 mx-auto" style={{
+                  width: '100%',
+                  maxWidth: '400px',
+                  aspectRatio: '8.5 / 11',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                }}>
+                  {/* Paper texture */}
+                  <div className="absolute inset-0 rounded-lg opacity-30" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
+                  }}></div>
+                  
+                  {/* Blue painter's tape in corners */}
+                  <div className="absolute -top-2 -left-2 w-8 h-3 bg-blue-200/80 rounded-sm shadow-md border border-blue-300/60 transform rotate-[-15deg] z-20"></div>
+                  <div className="absolute -top-2 -right-2 w-8 h-3 bg-blue-200/80 rounded-sm shadow-md border border-blue-300/60 transform rotate-[15deg] z-20"></div>
+                  
+                  <div className="p-6 md:p-8 relative z-10 h-full flex flex-col">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="bg-gradient-to-br from-emerald-100 to-teal-200 rounded-lg p-3 border border-emerald-300/50 shadow-md">
+                        <TreePine className="text-emerald-700" size={28} />
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-rustic-800">Summer Shows</h3>
                     </div>
-                    <h3 className="text-3xl font-display font-bold text-rustic-800">Summer Shows</h3>
+                    <p className="text-base md:text-lg text-rustic-700 font-serif leading-relaxed mb-3 flex-grow">
+                      In the summers, we host in our beautiful backyard beneath the poplar trees. 
+                      The outdoor setting creates an intimate, relaxed atmosphere where music and nature blend together.
+                      Bring a blanket, find a spot on the grass, and enjoy live music under the stars. 
+                      The natural acoustics and open air create a unique listening experience.
+                    </p>
                   </div>
-                  <p className="text-lg text-rustic-700 font-serif leading-relaxed mb-4">
-                    In the summers, we host in our beautiful backyard beneath the poplar trees. 
-                    The outdoor setting creates an intimate, relaxed atmosphere where music and nature blend together.
-                  </p>
-                  <p className="text-lg text-rustic-700 font-serif leading-relaxed mb-6">
-                    Bring a blanket, find a spot on the grass, and enjoy live music under the stars. 
-                    The natural acoustics and open air create a unique listening experience.
-                  </p>
                 </div>
                 
-                {/* Image gallery */}
-                <div className="grid grid-cols-2 gap-2 p-4 bg-gradient-to-br from-emerald-50/30 to-teal-50/30">
-                  <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg border-2 border-emerald-200/50 group-hover:border-emerald-300 transition-colors">
-                    <img 
-                      src={outdoorVenue1} 
-                      alt="Outdoor venue setting" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                {/* Polaroid photos overlapping bottom of letter */}
+                <div className="flex flex-wrap gap-4 justify-center -mt-16 md:-mt-20 relative z-30">
+                  {/* Polaroid 1 */}
+                  <div className="relative transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:scale-105" style={{
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))'
+                  }}>
+                    <div className="bg-white p-2.5 shadow-2xl border border-rustic-200/60" style={{
+                      boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.25), 0 5px 15px -5px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                    }}>
+                      <div className="relative aspect-[4/5] w-40 md:w-48 overflow-hidden bg-rustic-100 border border-rustic-200/30">
+                        <img 
+                          src={outdoorVenue1} 
+                          alt="Outdoor venue setting" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* Polaroid bottom white space */}
+                      <div className="h-10 bg-white"></div>
+                    </div>
                   </div>
-                  <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg border-2 border-emerald-200/50 group-hover:border-emerald-300 transition-colors">
-                    <img 
-                      src={outdoorVenue2} 
-                      alt="Outdoor concert atmosphere" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                  
+                  {/* Polaroid 2 */}
+                  <div className="relative transform rotate-[-2deg] hover:rotate-0 transition-all duration-300 hover:scale-105 mt-4" style={{
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))'
+                  }}>
+                    <div className="bg-white p-2.5 shadow-2xl border border-rustic-200/60" style={{
+                      boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.25), 0 5px 15px -5px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                    }}>
+                      <div className="relative aspect-[4/5] w-40 md:w-48 overflow-hidden bg-rustic-100 border border-rustic-200/30">
+                        <img 
+                          src={outdoorVenue2} 
+                          alt="Outdoor concert atmosphere" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* Polaroid bottom white space */}
+                      <div className="h-10 bg-white"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Winter */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-rustic-200/50 relative group">
-                {/* Colorful accent stripe */}
-                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500"></div>
-                
-                <div className="p-8 md:p-12">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="bg-gradient-to-br from-indigo-100 to-purple-200 rounded-lg p-4 border border-indigo-300/50 shadow-md">
-                      <Snowflake className="text-indigo-700" size={32} />
+              {/* Winter - Letter style */}
+              <div className="relative">
+                {/* Letter/Note background with paper texture - 8.5" x 11" aspect ratio */}
+                <div className="bg-gradient-to-br from-amber-50 via-white to-amber-50/50 rounded-lg shadow-2xl border-2 border-rustic-300/40 relative transform rotate-[1.5deg] hover:rotate-0 transition-transform duration-300 mx-auto" style={{
+                  width: '100%',
+                  maxWidth: '400px',
+                  aspectRatio: '8.5 / 11',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                }}>
+                  {/* Paper texture */}
+                  <div className="absolute inset-0 rounded-lg opacity-30" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
+                  }}></div>
+                  
+                  {/* Blue painter's tape in corners */}
+                  <div className="absolute -top-2 -left-2 w-8 h-3 bg-blue-200/80 rounded-sm shadow-md border border-blue-300/60 transform rotate-[-15deg] z-20"></div>
+                  <div className="absolute -top-2 -right-2 w-8 h-3 bg-blue-200/80 rounded-sm shadow-md border border-blue-300/60 transform rotate-[15deg] z-20"></div>
+                  
+                  <div className="p-6 md:p-8 relative z-10 h-full flex flex-col">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="bg-gradient-to-br from-indigo-100 to-purple-200 rounded-lg p-3 border border-indigo-300/50 shadow-md">
+                        <Snowflake className="text-indigo-700" size={28} />
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-rustic-800">Indoor Concerts</h3>
                     </div>
-                    <h3 className="text-3xl font-display font-bold text-rustic-800">Indoor Concerts</h3>
+                    <p className="text-base md:text-lg text-rustic-700 font-serif leading-relaxed mb-3 flex-grow">
+                      In the cooler months, we move indoors for smaller, more intimate performances. 
+                      Our cozy indoor space creates a warm, welcoming environment perfect for acoustic sets.
+                      The intimate setting allows for a deeper connection between artists and audience, 
+                      creating memorable musical moments in a comfortable, home-like atmosphere.
+                    </p>
                   </div>
-                  <p className="text-lg text-rustic-700 font-serif leading-relaxed mb-4">
-                    In the cooler months, we move indoors for smaller, more intimate performances. 
-                    Our cozy indoor space creates a warm, welcoming environment perfect for acoustic sets.
-                  </p>
-                  <p className="text-lg text-rustic-700 font-serif leading-relaxed mb-6">
-                    The intimate setting allows for a deeper connection between artists and audience, 
-                    creating memorable musical moments in a comfortable, home-like atmosphere.
-                  </p>
                 </div>
                 
-                {/* Image gallery */}
-                <div className="grid grid-cols-2 gap-2 p-4 bg-gradient-to-br from-indigo-50/30 to-purple-50/30">
-                  <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg border-2 border-indigo-200/50 group-hover:border-indigo-300 transition-colors">
-                    <img 
-                      src={indoorVenue1} 
-                      alt="Indoor venue setting" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                {/* Polaroid photos overlapping bottom of letter */}
+                <div className="flex flex-wrap gap-4 justify-center -mt-16 md:-mt-20 relative z-30">
+                  {/* Polaroid 1 */}
+                  <div className="relative transform rotate-[-2deg] hover:rotate-0 transition-all duration-300 hover:scale-105" style={{
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))'
+                  }}>
+                    <div className="bg-white p-2.5 shadow-2xl border border-rustic-200/60" style={{
+                      boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.25), 0 5px 15px -5px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                    }}>
+                      <div className="relative aspect-[4/5] w-40 md:w-48 overflow-hidden bg-rustic-100 border border-rustic-200/30">
+                        <img 
+                          src={indoorVenue1} 
+                          alt="Indoor venue setting" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* Polaroid bottom white space */}
+                      <div className="h-10 bg-white"></div>
+                    </div>
                   </div>
-                  <div className="relative aspect-square rounded-lg overflow-hidden shadow-lg border-2 border-indigo-200/50 group-hover:border-indigo-300 transition-colors">
-                    <img 
-                      src={indoorVenue2} 
-                      alt="Indoor concert atmosphere" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                  
+                  {/* Polaroid 2 */}
+                  <div className="relative transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:scale-105 mt-4" style={{
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))'
+                  }}>
+                    <div className="bg-white p-2.5 shadow-2xl border border-rustic-200/60" style={{
+                      boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.25), 0 5px 15px -5px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                    }}>
+                      <div className="relative aspect-[4/5] w-40 md:w-48 overflow-hidden bg-rustic-100 border border-rustic-200/30">
+                        <img 
+                          src={indoorVenue2} 
+                          alt="Indoor concert atmosphere" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* Polaroid bottom white space */}
+                      <div className="h-10 bg-white"></div>
+                    </div>
                   </div>
                 </div>
               </div>
